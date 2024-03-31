@@ -86,3 +86,7 @@ Learn more about the power of Turborepo:
 - [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
 - [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
 - [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+
+# LICENSE
+
+- [MIT](https://github.com/keinuma/continuer-frontend/blob/main/LICENSE)
