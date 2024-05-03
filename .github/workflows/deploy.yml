@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    name: build and deploy
+    name: build and deploy by Docker
     runs-on: ubuntu-latest
     permissions:
       id-token: write
