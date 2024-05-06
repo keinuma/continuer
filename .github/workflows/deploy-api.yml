@@ -35,5 +35,5 @@ jobs:
           context: .
           file: ./apps/api/Dockerfile
           push: true
-          tags: ${{ secrets.GOOGLE_ARTIFACT_REGISTRY_REGION }}/continuer-api/app:latest
+          tags: asia-northeast1-docker.pkg.dev/${{ env.GCP_PROJECT }}/continuer-api/app:latest
           platforms: linux/amd64

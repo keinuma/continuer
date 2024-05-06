@@ -3,5 +3,14 @@
 ## Dev
 
 ```sh
-pnpm install --filter=api...
+pnpm install
+pnpm dev --filter=api...
+```
+
+or
+
+```sh
+cd apps/api
+pnpm install
+pnpm dev
 ```
