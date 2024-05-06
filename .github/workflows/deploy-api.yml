@@ -37,3 +37,7 @@ jobs:
           push: true
           tags: asia-northeast1-docker.pkg.dev/${{ env.GCP_PROJECT }}/continuer-api/app:latest
           platforms: linux/amd64
+      - uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: continuer-api
+          image: asia-northeast1-docker.pkg.dev/${{ env.GCP_PROJECT }}/continuer-api/app:latest
