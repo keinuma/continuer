@@ -21,6 +21,7 @@ WORKDIR /app
 
 # First install dependencies (as they change less often)
 COPY .gitignore .gitignore
+COPY ./prisma/ ./prisma/
 COPY --from=deps /app/out/json/ .
 COPY --from=deps /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 RUN pnpm install --frozen-lockfile
