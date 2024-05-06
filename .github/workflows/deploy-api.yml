@@ -39,6 +39,12 @@ jobs:
           platforms: linux/amd64
       - uses: google-github-actions/deploy-cloudrun@v2
         with:
+          job: continuer_worker
+          region: asia-northeast1
+          image: asia-northeast1-docker.pkg.dev/${{ env.GCP_PROJECT }}/continuer-api/app:latest
+          flags: --command="pnpm run migrate:deploy"
+      - uses: google-github-actions/deploy-cloudrun@v2
+        with:
           service: continuer-api
           region: asia-northeast1
           image: asia-northeast1-docker.pkg.dev/${{ env.GCP_PROJECT }}/continuer-api/app:latest
