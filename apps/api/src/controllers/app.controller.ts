@@ -13,6 +13,6 @@ export class AppController {
     }
 
     const firstUser = users[0];
-    return `${firstUser.name}がみつかりました`;
+    return `${firstUser.name}を発見`;
   }
 }

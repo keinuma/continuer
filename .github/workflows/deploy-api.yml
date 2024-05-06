@@ -40,4 +40,5 @@ jobs:
       - uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: continuer-api
+          region: asia-northeast1
           image: asia-northeast1-docker.pkg.dev/${{ env.GCP_PROJECT }}/continuer-api/app:latest
