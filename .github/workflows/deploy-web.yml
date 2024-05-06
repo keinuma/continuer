@@ -30,5 +30,15 @@ jobs:
           registry: asia-northeast1-docker.pkg.dev
           username: oauth2accesstoken
           password: ${{ steps.google-auth.outputs.access_token }}
-      - run: docker build --platform=linux/amd64 --tag ${{ secrets.GOOGLE_ARTIFACT_REGISTRY }}:latest -f ./apps/web/Dockerfile .
-      - run: docker push ${{ secrets.GOOGLE_ARTIFACT_REGISTRY }}:latest
+      - uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./apps/web/Dockerfile
+          push: true
+          tags: asia-northeast1-docker.pkg.dev/${{ env.GCP_PROJECT }}/continuer-web/app:latest
+          platforms: linux/amd64
+      - uses: google-github-actions/deploy-cloudrun@v2
+        with:
+          service: continuer-api
+          region: asia-northeast1
+          image: asia-northeast1-docker.pkg.dev/${{ env.GCP_PROJECT }}/continuer-web/app:latest
