@@ -1,3 +1,5 @@
+[![Deploy API](https://github.com/keinuma/continuer-app/actions/workflows/deploy-api.yml/badge.svg)](https://github.com/keinuma/continuer-app/actions/workflows/deploy-api.yml)
+
 # continuer
 
 ## Develop
