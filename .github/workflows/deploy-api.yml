@@ -43,6 +43,6 @@ jobs:
           region: asia-northeast1
           image: asia-northeast1-docker.pkg.dev/${{ env.GCP_PROJECT }}/continuer-api/app:latest
           env_vars: |
-            - DATABASE_USER=continuer-app
-          secrets: |-
-            DATABASE_URL=DATABASE_URL:latest
+            DATABASE_USER=continuer-app
+          secrets: |
+            DATABASE_URL=credentials:latest
