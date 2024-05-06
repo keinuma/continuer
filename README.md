@@ -1,6 +1,6 @@
 # continuer
 
-### Develop
+## Develop
 
 To develop all apps and packages, run the following command:
 
@@ -9,13 +9,12 @@ pnpm install
 pnpm dev
 ```
 
-### Build and Deploy with Docker
+## Build and Deploy with Docker
 
 ```sh
 docker build --platform=linux/amd64 --tag asia-northeast1-docker.pkg.dev/${project-id}/${repository-id}/app:latest -f ./apps/web Dockerfile .
 docker push asia-northeast1-docker.pkg.dev/${project-id}/${repository-id}/app:latest
 ```
-
 
 # LICENSE
 

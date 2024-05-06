@@ -1,13 +1,15 @@
-name: deploy
+name: Deploy API
 
 on:
   push:
+    paths:
+      - "apps/api/**"
     branches:
       - main
 
 jobs:
   deploy:
-    name: build and deploy by Docker
+    name: build and deploy API by Docker
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -28,5 +30,10 @@ jobs:
           registry: asia-northeast1-docker.pkg.dev
           username: oauth2accesstoken
           password: ${{ steps.google-auth.outputs.access_token }}
-      - run: docker build --platform=linux/amd64 --tag ${{ secrets.GOOGLE_ARTIFACT_REGISTRY }}:latest -f ./apps/api/Dockerfile .
-      - run: docker push ${{ secrets.GOOGLE_ARTIFACT_REGISTRY }}:latest
+      - uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./apps/api/Dockerfile
+          push: true
+          tags: ${{ secrets.GOOGLE_ARTIFACT_REGISTRY_REGION }}/continuer-api/app:latest
+          platforms: linux/amd64
