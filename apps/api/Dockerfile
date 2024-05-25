@@ -25,6 +25,7 @@ COPY --from=deps /app/out/json/ .
 COPY --from=deps /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=deps /app/out/full/apps/api/prisma/ ./apps/api/
 RUN pnpm install --frozen-lockfile
+RUN cd apps/api && pnpm prisma generate
 
 COPY --from=deps /app/out/full/ .
 COPY turbo.json turbo.json

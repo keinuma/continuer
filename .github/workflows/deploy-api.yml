@@ -37,14 +37,18 @@ jobs:
           push: true
           tags: asia-northeast1-docker.pkg.dev/${{ env.GCP_PROJECT }}/continuer-api/app:latest
           platforms: linux/amd64
-      - name: Migration
+      - name: Deploy to worker in CloudRun
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           job: continuer-worker
           region: asia-northeast1
           image: asia-northeast1-docker.pkg.dev/${{ env.GCP_PROJECT }}/continuer-api/app:latest
-          flags: --command="cd apps/api && pnpm run migrate:deploy"
-      - name: Deploy to CloudRun
+      - name: Migration
+        run: |
+          gcloud run jobs execute continuer-worker \
+            --region=asia-northeast1 \
+            --args="-c,cd,apps/api,&&,pnpm,migrate:deploy"
+      - name: Deploy to API in CloudRun
         uses: google-github-actions/deploy-cloudrun@v2
         with:
           service: continuer-api
