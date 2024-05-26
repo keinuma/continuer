@@ -42,10 +42,10 @@ RUN addgroup --system --gid 1001 nestjs
 RUN adduser --system --uid 1001 nestjs
 USER nestjs
 
-COPY --from=builder /app .
+COPY --from=builder /app/api/ .
 
 EXPOSE 3001
 ENV PORT 3001
 ENV HOSTNAME "0.0.0.0"
 
-CMD ["node", "apps/api/dist/main.js"]
+CMD ["node", "dist/main.js"]
