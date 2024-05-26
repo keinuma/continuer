@@ -43,6 +43,7 @@ RUN adduser --system --uid 1001 nestjs
 USER nestjs
 
 COPY --from=builder /app/apps/api/ .
+COPY --from=builder /app/node_modules/ ./node_modules/
 
 EXPOSE 3001
 ENV PORT 3001
