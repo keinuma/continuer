@@ -42,11 +42,12 @@ RUN addgroup --system --gid 1001 nestjs
 RUN adduser --system --uid 1001 nestjs
 USER nestjs
 
-COPY --from=builder /app/apps/api/ .
-COPY --from=builder /app/node_modules/ ./node_modules/
+COPY --from=builder /app .
 
 EXPOSE 3001
 ENV PORT 3001
 ENV HOSTNAME "0.0.0.0"
+
+WORKDIR /app/apps/api
 
 CMD ["node", "dist/main.js"]
