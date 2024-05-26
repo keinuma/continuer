@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from '../services/app.service';
+import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
@@ -9,7 +9,7 @@ export class AppController {
   async getHello(): Promise<string> {
     const users = await this.appService.findAll();
     if (users.length === 0) {
-      return 'No users found';
+      return 'だれもみつけられなかった...';
     }
 
     const firstUser = users[0];
